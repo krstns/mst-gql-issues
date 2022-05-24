@@ -1,0 +1,56 @@
+type ExternalSoftware implements Node {
+  id: ID!
+  _id: String!
+  name: String!
+  created: String!
+  modified: String!
+}
+
+type Mutation {
+  deleteExternalSoftware(input: deleteExternalSoftwareInput!): deleteExternalSoftwarePayload
+  updateExternalSoftware(input: updateExternalSoftwareInput!): updateExternalSoftwarePayload
+  createExternalSoftware(input: createExternalSoftwareInput!): createExternalSoftwarePayload
+}
+
+interface Node {
+  id: ID!
+}
+
+type Query {
+  node(id: ID!): Node
+  externalSoftware(id: ID!): ExternalSoftware
+}
+
+
+input createExternalSoftwareInput {
+  _id: String!
+  name: String!
+  clientMutationId: String
+}
+
+type createExternalSoftwarePayload {
+  externalSoftware: ExternalSoftware
+  clientMutationId: String
+}
+
+input deleteExternalSoftwareInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type deleteExternalSoftwarePayload {
+  externalSoftware: ExternalSoftware
+  clientMutationId: String
+}
+
+input updateExternalSoftwareInput {
+  id: ID!
+  _id: String
+  name: String
+  clientMutationId: String
+}
+
+type updateExternalSoftwarePayload {
+  externalSoftware: ExternalSoftware
+  clientMutationId: String
+}
